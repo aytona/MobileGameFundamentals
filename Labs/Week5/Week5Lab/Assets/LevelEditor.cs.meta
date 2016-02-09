@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 17e4789f831a34ebcb61eb5956d33595
+timeCreated: 1455053658
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - GroundSprite: {fileID: 21300000, guid: 5ea6f999daa7e4d4dbca6ec910ecee55, type: 3}
+  - WaterSprite: {fileID: 21300000, guid: 85ff96b5c209149939c2b2e06a4f019b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
