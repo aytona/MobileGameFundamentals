@@ -69,17 +69,28 @@ public class LevelEditor : EditorWindow {
 		GameObject rootObject = new GameObject ();
 		rootObject.name = name;
 
-		for (int i = 0; i < groundTiles; i++)
-		{
-			GameObject levelObject = new GameObject();
-			levelObject.transform.SetParent(rootObject.transform);
+		for (int i = 0; i < groundTiles; i++) {
+			GameObject levelObject = new GameObject ();
+			levelObject.transform.SetParent (rootObject.transform);
 			levelObject.name = name + objectCount;
 			objectCount++;
 			levelObject.transform.position = currentLocation;
 			currentLocation.x += xGround;
-			SpriteRenderer levelRenderer = levelObject.AddComponent<SpriteRenderer>();
+			SpriteRenderer levelRenderer = levelObject.AddComponent<SpriteRenderer> ();
 			levelRenderer.sprite = sp1;
-			levelObject.AddComponent<BoxCollider2D>();
+			levelObject.AddComponent<BoxCollider2D> ();
+		}
+
+		for (int i = 0; i < waterTiles; i++) {
+			GameObject levelObject = new GameObject ();
+			levelObject.transform.SetParent (rootObject.transform);
+			levelObject.name = name + objectCount;
+			objectCount++;
+			levelObject.transform.position = currentLocation;
+			currentLocation.x += xWater;
+			SpriteRenderer levelRenderer = levelObject.AddComponent<SpriteRenderer> ();
+			levelRenderer.sprite = sp2;
+			levelObject.AddComponent<BoxCollider2D> ();
 		}
 	}
 }
