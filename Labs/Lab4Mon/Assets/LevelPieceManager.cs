@@ -11,12 +11,10 @@ public class LevelPieceManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 		ActiveLevelPieces = new LevelPiece[2];
 		ActiveLevelPieces[0] = StartingLevelPiece;
 		ActiveLevelPieces[1] = GetRandomLevelPiece();
 		//leftPos = StartingLevelPiece.transform.position
-
 		ActiveLevelPieces[1].transform.position = StartingLevelPiece.gameObject.transform.FindChild("EndLocation").position;
 	}
 
