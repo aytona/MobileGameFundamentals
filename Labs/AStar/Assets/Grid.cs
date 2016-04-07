@@ -8,6 +8,7 @@ public class Grid : MonoBehaviour {
 	public Vector2 gridWorldSize;
 	public float nodeRadius;
 	Node[,] grid;
+	public List<Node> path;
 
 	float nodeDiameter;
 	int gridSizeX;
@@ -18,7 +19,12 @@ public class Grid : MonoBehaviour {
 			new Vector3 (gridWorldSize.x, 1, gridWorldSize.y));
 		if (grid != null) {
 			foreach (Node n in grid) {
-				Gizmos.color = (n.walkable) ? Color.white : Color.red;
+				Gizmos.color = (n.walkable) ? Color.yellow : Color.red;
+				if (path != null) {
+					if (path.Contains(n)) {
+						Gizmos.color = Color.black;
+					}
+				}
 				Gizmos.DrawCube(n.worldPosition,Vector3.one*(nodeDiameter-0.1f));
 			}
 		}
@@ -73,5 +79,15 @@ public class Grid : MonoBehaviour {
 	}
 
 	public Node NodeFromWorldPoint(Vector3 worldPosition) {
+		float percentX = (worldPosition.x + gridWorldSize.y / 2) / gridWorldSize.x;
+		float percentY = (worldPosition.z + gridWorldSize.y / 2) / gridWorldSize.y;
+
+		percentX = Mathf.Clamp01(percentX);
+		percentY = Mathf.Clamp01(percentY);
+
+		int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
+		int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
+
+		return grid[x, y];
 	}
 }
